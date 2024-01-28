@@ -3,7 +3,6 @@ import "./App.css";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import SignIn from "./pages/SignIn";
-//no error here
 import SignUp from "./pages/SignUp";
 
 import Offers from "./pages/Offers";
