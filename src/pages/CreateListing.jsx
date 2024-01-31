@@ -86,15 +86,15 @@ function CreateListing() {
       toast.error("Max Of 6 Images Allowed");
       return;
     }
-    let geoLocation = {};
+    let geolocation = {};
     let location;
     if (geoLocationEnabled) {
       const response = await fetch(
         `https://geocode.maps.co/search?q=${address}&api_key=65b7ffef280ac455717572ckad7fa79`
       );
       const data = await response.json();
-      geoLocation.lat = data[0]?.lat || 0;
-      geoLocation.lon = data[0]?.lon || 0;
+      geolocation.lat = data[0]?.lat || 0;
+      geolocation.lng = data[0]?.lon || 0;
       location = data.length === 0 && undefined;
       console.log(data);
       console.log(location);
@@ -104,8 +104,8 @@ function CreateListing() {
         return;
       }
     } else {
-      geoLocation.lat = latitude;
-      geoLocation.lon = longitude;
+      geolocation.lat = latitude;
+      geolocation.lng = longitude;
     }
     async function storeImage(image) {
       return new Promise((resolve, reject) => {
@@ -166,7 +166,7 @@ function CreateListing() {
     const formDataCopy = {
       ...formData,
       imgUrls,
-      geoLocation,
+      geolocation,
       timestamp: serverTimestamp(),
       userRef: auth.currentUser.uid,
     };
