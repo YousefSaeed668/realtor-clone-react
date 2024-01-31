@@ -57,7 +57,7 @@ function Listing() {
         {listing.imgUrls.map((url, index) => (
           <SwiperSlide key={index}>
             <div
-              className="w-full relative overflow-hidden h-[300px]"
+              className="w-full relative overflow-hidden h-[300px] sm:h-[500px]"
               style={{
                 background: `url(${listing.imgUrls[index]}) center no-repeat`,
                 backgroundSize: "cover",
@@ -104,8 +104,8 @@ function Listing() {
             <p className="bg-red-800 w-full max-w-[200px] rounded-md p-1 text-white text-center font-semibold shadow-md">
               {listing.type === "rent" ? "Rent" : "Sale"}
             </p>
-            <p className="w-full max-w-[200px] bg-green-800 rounded-md p-1 rounded-md text-white text-center font-semibold shadow-md">
-              {listing.offer && (
+            {listing.offer && (
+              <p className="w-full max-w-[200px] bg-green-800  p-1 rounded-md text-white text-center font-semibold shadow-md">
                 <p>
                   $
                   {(
@@ -116,8 +116,8 @@ function Listing() {
                     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
                   Discount
                 </p>
-              )}
-            </p>
+              </p>
+            )}
           </div>
           <p className="mt-3 mb-3">
             <span className="font-semibold">Description -</span>
