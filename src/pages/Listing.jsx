@@ -10,6 +10,7 @@ import {
   FaBath,
   FaBed,
 } from "react-icons/fa";
+import { getAuth } from "firebase/auth";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay, EffectFade } from "swiper/modules";
@@ -19,12 +20,15 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import Spinner from "../components/Spinner";
+import Contact from "../components/Contact";
 
 function Listing() {
   const params = useParams();
   const [listing, setListing] = useState(null);
   const [loading, setLoading] = useState(true);
   const [shareLinkCopied, setShareLinkCopied] = useState(false);
+  const [contactLandlord, setContactLandlord] = useState(false);
+  const auth = getAuth();
   useEffect(() => {
     async function fetchListing() {
       const docRef = doc(db, "listings", params.listingId);
@@ -79,7 +83,7 @@ function Listing() {
         </p>
       )}
       <div className="max-w-6xl flex flex-col md:flex-row lg:mx-auto p-4 rounded-lg  shadow-lg bg-white lg:space-x-5">
-        <div className=" w-full  h-[200px] lg:h-[400px] ">
+        <div className=" w-full ">
           <p className="text-2xl font-bold mb-3 text-blue-900 ">
             {listing.name} - $
             {listing.offer
@@ -136,6 +140,19 @@ function Listing() {
               {listing.furnished ? "Furnished" : "Not furnished"}
             </li>
           </ul>
+          {listing.userRef !== auth.currentUser?.uid && !contactLandlord && (
+            <div className="mt-6">
+              <button
+                onClick={() => setContactLandlord(true)}
+                className="text-white px-7 py-3 bg-blue-600 font-medium text-sm uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg w-full text-center transition duration-150 ease-in-out"
+              >
+                Contact Landlord
+              </button>
+            </div>
+          )}
+          {contactLandlord && (
+            <Contact userRef={listing.userRef} listing={listing} />
+          )}
         </div>
         <div className="bg-blue-300 w-full h-[200px] lg:h-[400px] z-10 overflow-x-hidden"></div>
       </div>
