@@ -2,17 +2,13 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyB-0UjwAxnabt9viV1tXXqfJfMDVb4FRC8",
-  authDomain: "realtor-clone-3d8c4.firebaseapp.com",
-  projectId: "realtor-clone-3d8c4",
-  storageBucket: "realtor-clone-3d8c4.appspot.com",
-  messagingSenderId: "731692525437",
-  appId: "1:731692525437:web:dc310a5cf4199669f14e14",
+  apiKey: import.meta.env.VITE_APP_API_KEY,
+  authDomain: import.meta.env.VITE_APP_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_APP_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_APP_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_APP_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_APP_ID,
 };
 
 // Initialize Firebase
