@@ -100,7 +100,10 @@ function Category() {
           )}
         </>
       ) : (
-        <p className="text-center mt-6">There Is No Current Offers</p>
+        <p className="text-center mt-6">
+          There Is No Current{" "}
+          {params.categoryName === "rent" ? " Rent" : " Sale"}
+        </p>
       )}
     </div>
   );
