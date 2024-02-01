@@ -26,7 +26,12 @@ function Contact({ userRef, listing }) {
       {landlord && (
         <div className="flex flex-col w-full">
           <p>
-            Contact {landlord.name} for the {listing.name.toLowerCase()}
+            Contact{" "}
+            <span className="font-bold text-blue-950">{landlord.name} </span>
+            for the{" "}
+            <span className="font-bold text-red-950">
+              {listing.name.toLowerCase()}
+            </span>
           </p>
           <div>
             <textarea
