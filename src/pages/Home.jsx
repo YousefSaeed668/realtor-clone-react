@@ -37,6 +37,7 @@ function Home() {
             data: doc.data(),
           });
         });
+        setOfferListings(listings);
       } catch (error) {}
     }
     fetchListings();
