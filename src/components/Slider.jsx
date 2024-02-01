@@ -54,6 +54,7 @@ function Slider() {
                 style={{
                   background: `url(${data.imgUrls[0]}) center, no-repeat`,
                   backgroundSize: "cover",
+                  cursor: "pointer",
                 }}
                 className="relative w-full h-[300px]  sm:h-[500px] overflow-hidden"
               ></div>
